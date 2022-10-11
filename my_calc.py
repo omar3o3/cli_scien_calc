@@ -62,52 +62,63 @@ while True:
     
     def logo_func():
         '''the logo functionality'''
-        base_wanted = input('\n do you want to provide the base number? default is base 10. (y/n): ')
-        if base_wanted.lower() == 'y':
-            base = int(input('\n enter base: '))
-            num = int(input('\n enter number: '))
-            print(result_line , math.log(num , base))
+        try:
+            base_wanted = input('\n do you want to provide the base number? default is base 10. (y/n): ')
+            if base_wanted.lower() == 'y':
+                base = int(input('\n enter base: '))
+                num = int(input('\n enter number: '))
+                print(result_line , math.log(num , base))
+                return_to_main_menu()
+            if base_wanted.lower() == 'n':
+                num = int(input('\n enter number: '))
+                print(result_line , math.log10(num))
+                return_to_main_menu()
+            if base_wanted.lower() not in ['y' , 'n']:
+                rerun_logo_fun()
+        except:
+            print('\n one or both input values must be numbers')
             return_to_main_menu()
-        if base_wanted.lower() == 'n':
-            num = int(input('\n enter number: '))
-            print(result_line , math.log10(num))
-            return_to_main_menu()
-        if base_wanted.lower() not in ['y' , 'n']:
-            rerun_logo_fun()
         
         
     def accuire_2_numbers(opr):
         '''majority of the calculator functionality exists here where it asks for 2 numbers 
         and returns the appropiate answer, more complex functionality will have their own methods'''
-        print('\n enter first number \n')
-        x = int(input('first number: '))
-        print('\n enter second number \n')
-        y = int(input('second number: '))
-        if opr == 'sub':
-            print(result_line , x - y)
+        
+        try:
+            print('\n enter first number \n')
+            x = int(input('first number: '))
+            print('\n enter second number \n')
+            y = int(input('second number: '))
             
-        if opr == 'add':
-            print(result_line, x + y)
-            
-        if opr == 'multi':
-            print(result_line , x * y)
-            
-        if opr == 'divi':
-            if y == 0:
-                print('\n sorry, division by zero isn\'t possible')
-            else:
-                print(result_line, x / y)
+            if opr == 'sub':
+                print(result_line , x - y)
                 
-        if opr == 'modulo':
-            if y == 0:
-                print('\n sorry, modulo by zero isn\'t possible')
-            else:
-                print(result_line , x%y)
-        
-        if opr == 'expo':
-            print(result_line, x ** y)
-        
-        return_to_main_menu()
+            if opr == 'add':
+                print(result_line, x + y)
+                
+            if opr == 'multi':
+                print(result_line , x * y)
+                
+            if opr == 'divi':
+                if y == 0:
+                    print('\n sorry, division by zero isn\'t possible')
+                else:
+                    print(result_line, x / y)
+                    
+            if opr == 'modulo':
+                if y == 0:
+                    print('\n sorry, modulo by zero isn\'t possible')
+                else:
+                    print(result_line , x%y)
+            
+            if opr == 'expo':
+                print(result_line, x ** y)     
+            
+            return_to_main_menu()
+
+        except ValueError:
+            print('\n both input values must be numbers')
+            return_to_main_menu()
         
         
     if calc_option == 0:
@@ -134,30 +145,42 @@ while True:
         accuire_2_numbers('expo')
         
     if calc_option == 6:
-        print('\n enter the number \n')
-        x = int(input('number: '))
-        print(result_line , math.sqrt(x))
-        return_to_main_menu()
+        try:
+            print('\n enter the number \n')
+            x = int(input('number: '))
+            print(result_line , math.sqrt(x))
+            return_to_main_menu()
+        except:
+            print('\n input value must be a number')
+            return_to_main_menu()
         
             
     if calc_option == 7:
         logo_func()
         
     if calc_option == 8:
-        print('\n enter the number \n')
-        x = int(input('number: '))
-        print(result_line , math.sin(x))
-        return_to_main_menu()
+        try:
+            print('\n enter the number \n')
+            x = int(input('number: '))
+            print(result_line , math.sin(x))
+            return_to_main_menu()
+        except:
+            print('\n input value must be a number')
         
     if calc_option == 9:
-        print('\n enter the number \n')
-        x = int(input('number: '))
-        print(result_line , math.cos(x))
-        return_to_main_menu()
-        
+        try:
+            print('\n enter the number \n')
+            x = int(input('number: '))
+            print(result_line , math.cos(x))
+            return_to_main_menu()
+        except:
+            print('\n input value must be a number')
         
     if calc_option == 10:
-        print('\n enter the number \n')
-        x = int(input('number: '))
-        print(result_line , math.tan(x))
-        return_to_main_menu()
+        try:
+            print('\n enter the number \n')
+            x = int(input('number: '))
+            print(result_line , math.tan(x))
+            return_to_main_menu()
+        except:
+            print('\n input value must be a number')
