@@ -1,9 +1,11 @@
 import math
 
 while True:
+    '''allows for the calculator functionality to run constantly unless directly closed by the user'''
     print('')
     print('Select an option... \n')
 
+# all the calc options
     options = [
         '0. addition',
         '1. subtractions',
@@ -19,18 +21,24 @@ while True:
         '11. exit the application',
         ]
 
+
     for option in options:
+        '''print the option menu screen'''
         print(option)
 
     calc_option = int(input('\n your selection: '))
 
     if calc_option not in list(range(12)):
+        '''if a user inputs a number not within the option menu screen they are asked to select again'''
         print(f"{calc_option} is not an option, please select again")
         
     if calc_option == 11:
+        '''closes the application for the user'''
         exit()
         
     def return_to_main_menu():
+        '''after a user completes an operation they are asked if they want to return to the main
+        menu or exit the application'''
         reply = input("\n Return to main menu? (y/n) ")
         if reply.lower() == "y":
             return None
@@ -40,15 +48,20 @@ while True:
             print('\n please select a valid option')
             return_to_main_menu()
     
+    
+    #line used to display the answer for the user
     result_line = '\n the result is: '
     
     
-    def test_run():
+    def rerun_logo_fun():
+        '''if the user doesnt select a valid option for if they want to provide their own base
+        number, the logo func will ask again'''
         print('\n please select a valid option')
         logo_func()
     
     
     def logo_func():
+        '''the logo functionality'''
         base_wanted = input('\n do you want to provide the base number? default is base 10. (y/n): ')
         if base_wanted.lower() == 'y':
             base = int(input('\n enter base: '))
@@ -60,10 +73,12 @@ while True:
             print(result_line , math.log10(num))
             return_to_main_menu()
         if base_wanted.lower() not in ['y' , 'n']:
-            test_run()
+            rerun_logo_fun()
         
         
     def accuire_2_numbers(opr):
+        '''majority of the calculator functionality exists here where it asks for 2 numbers 
+        and returns the appropiate answer, more complex functionality will have their own methods'''
         print('\n enter first number \n')
         x = int(input('first number: '))
         print('\n enter second number \n')
